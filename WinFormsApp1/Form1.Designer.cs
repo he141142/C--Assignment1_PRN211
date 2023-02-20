@@ -57,7 +57,6 @@
             this.label1.Size = new System.Drawing.Size(110, 28);
             this.label1.TabIndex = 1;
             this.label1.Text = "user name";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox2
             // 
@@ -76,7 +75,6 @@
             this.label2.Size = new System.Drawing.Size(101, 28);
             this.label2.TabIndex = 3;
             this.label2.Text = "password";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -88,7 +86,6 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "ASSIGNMENT WORKSHOP";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // loginBtn
             // 

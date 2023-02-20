@@ -53,7 +53,6 @@
             this.label1.Size = new System.Drawing.Size(281, 46);
             this.label1.TabIndex = 0;
             this.label1.Text = "User Profile";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -63,7 +62,6 @@
             this.label2.Size = new System.Drawing.Size(49, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "email:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -73,7 +71,6 @@
             this.label3.Size = new System.Drawing.Size(80, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "user name:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 

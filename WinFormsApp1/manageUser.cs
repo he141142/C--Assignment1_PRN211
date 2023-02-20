@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 using WinFormsApp1.BussinessObject;
+using WinFormsApp1.partialForm;
 using WinFormsApp1.Repository;
 
 namespace WinFormsApp1
@@ -19,7 +21,7 @@ namespace WinFormsApp1
 
         public void LoadUsers()
         {
-            this.Visible= true;
+            this.Visible = true;
             dataGridView1.DataSource = this.getuserData();
         }
 
@@ -40,7 +42,7 @@ namespace WinFormsApp1
             foreach (UserEntity user in users)
             {
                 richTextBox1.Text += user.UserName;
-                table.Rows.Add(user.Id, user.UserName,user.Country,user.City,user.Email);
+                table.Rows.Add(user.Id, user.UserName, user.Country, user.City, user.Email);
             }
             return table;
         }
@@ -50,12 +52,17 @@ namespace WinFormsApp1
 
         }
 
+        public void RefreshData()
+        {
+            DataTable data = this.getuserData();
+            dataGridView1.DataSource = data;
+        }
+
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex>= 0) {
-                long userId = Convert.ToInt64(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
-                UserEntity userEntity = this.repo.findById(userId);
-
+            if (e.RowIndex >= 0)
+            {
+                userIDSelected.Text= Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
             }
         }
 
@@ -72,6 +79,19 @@ namespace WinFormsApp1
         private void createUserBtn_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void updateBtn_Click(object sender, EventArgs e)
+        {
+            if(userIDSelected.Text!= null) {
+                UserEntity userEntity = this.repo.findById(Convert.ToInt64(userIDSelected.Text));
+                if (userEntity != null)
+                {
+                    PartialFormCreateUser formCreateUsr = new PartialFormCreateUser().addFormStack(this)
+                         .InjectRepo(repo).LoadUserEntity(userEntity);
+                    formCreateUsr.Visible= true;
+                }
+            }
         }
     }
 }

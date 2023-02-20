@@ -34,6 +34,8 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.createUserBtn = new System.Windows.Forms.Button();
             this.updateBtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.userIDSelected = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,6 +54,7 @@
             // 
             this.richTextBox1.Location = new System.Drawing.Point(887, 116);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(305, 394);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
@@ -81,12 +84,31 @@
             this.updateBtn.TabIndex = 3;
             this.updateBtn.Text = "update";
             this.updateBtn.UseVisualStyleBackColor = true;
+            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(151, 93);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(115, 20);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "selected user id:";
+            // 
+            // userIDSelected
+            // 
+            this.userIDSelected.Location = new System.Drawing.Point(280, 92);
+            this.userIDSelected.Name = "userIDSelected";
+            this.userIDSelected.Size = new System.Drawing.Size(125, 27);
+            this.userIDSelected.TabIndex = 5;
             // 
             // manageUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1219, 641);
+            this.Controls.Add(this.userIDSelected);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.updateBtn);
             this.Controls.Add(this.createUserBtn);
             this.Controls.Add(this.richTextBox1);
@@ -95,6 +117,7 @@
             this.Text = "Profile";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -110,5 +133,7 @@
         private ContextMenuStrip contextMenuStrip1;
         private Button createUserBtn;
         private Button updateBtn;
+        private Label label1;
+        private TextBox userIDSelected;
     }
 }

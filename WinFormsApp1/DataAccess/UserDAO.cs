@@ -1,12 +1,15 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WinFormsApp1.BussinessObject;
 using WinFormsApp1.BussinessObject.builder;
 using WinFormsApp1.BussinessObject.IBuilder;
+using WinFormsApp1.utils;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace WinFormsApp1.DataAccess
@@ -105,7 +108,7 @@ namespace WinFormsApp1.DataAccess
         public UserEntity findById(long id)
         {
             if (this.userEntityList != null)
-                return this.userEntityList.First(u => u.Id ==id);
+                return this.userEntityList.First(u => u.Id == id);
             return null;
         }
 
@@ -124,13 +127,62 @@ namespace WinFormsApp1.DataAccess
 
         public UserEntity findByEmail(String email)
         {
-            return this.userEntityList.First(u => u.Email == email);
+            try
+            {
+                return this.userEntityList.First(u => u.Email == email);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
-        public void UpdateUserById(UserEntity userEntity,long id)
+        public void UpdateUserById(UserEntity userEntity, long id)
         {
+            UserEntity _user = this.userEntityList.FirstOrDefault(u => u.Id == id);
+
+            if (userEntityList == null || (userEntityList != null && userEntityList.Count() == 0)) throw new Exception("User not found!");
+            if (!Helper.IsValidEmail(userEntity.Email)) throw new Exception("Email is not valid");
+            if (userEntity.Email != null && userEntity.Email != _user.Email)
+            {
+                UserEntity _emailExisted;
+                _emailExisted = this.findByEmail(userEntity.Email);
+                if (_emailExisted != null)
+                {
+                    throw new Exception("Email is already existed");
+                };
+            }
+            userEntityList.ToList().ForEach(usr =>
+            {
+                if (usr.Id == id)
+                {
+                    usr.City = userEntity.City;
+                    usr.Country = userEntity.Country;
+                    usr.UserName = userEntity.UserName;
+                    usr.Email = userEntity.Email;
+                }
+            });
+        }
+
+        public void InsertNew(UserEntity userEntity)
+        {
+            try
+            {
+                userEntity.Id = this.getMaxId() + 1;
+                userEntity.SelfValidate();
+                if (!IsEmailExist) throw new Exception("Email already existed!");
+                userEntityList.Concat(new List<UserEntity> { UserEntity});
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
         }
+
+
+        private bool IsEmailExist(string email) => this.findByEmail(email) != null ? true : false;
+
 
 
 

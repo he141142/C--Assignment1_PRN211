@@ -24,6 +24,35 @@ namespace WinFormsApp1.BussinessObject
         public string Password { get => password; set => password = value; }
         public Role Role { get => role; set => role = value; }
         public string UserName { get => userName; set => userName = value; }
+
+        public void SelfValidate()
+        {
+            if (this.Email == null || this.Email == "")
+            {
+                throw new Exception("Email is mandatory!");
+            }
+
+            if (this.Password == null || this.Password == "")
+            {
+                throw new Exception("Password is mandatory!");
+            }
+
+            if (this.UserName == null || this.UserName == "")
+            {
+                throw new Exception("UserName is mandatory!");
+            }
+
+            if (this.City == null || this.City == "")
+            {
+                throw new Exception("City is mandatory!");
+            }
+
+            if (this.Country == null || this.Country == "")
+            {
+                throw new Exception("Country is mandatory!");
+            }
+
+        }
     }
 
 

@@ -22,5 +22,9 @@ namespace WinFormsApp1.Repository.interfaces
 
         public UserEntity findByEmail(String email);
 
+         public void UpdateUserById(UserEntity userEntity,long id);
+
+       public void InsertNew(UserEntity userEntity);
+
     }
 }

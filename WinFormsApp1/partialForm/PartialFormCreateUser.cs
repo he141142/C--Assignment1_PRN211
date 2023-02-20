@@ -19,7 +19,7 @@ namespace WinFormsApp1.partialForm
     {
         UserEntity userEntity;
         IUserRepository userRepo;
-        Form prev;
+        manageUser prev;
         public PartialFormCreateUser()
         {
             InitializeComponent();
@@ -31,14 +31,16 @@ namespace WinFormsApp1.partialForm
         }
 
 
-        public Form addFormStack(Form prevForm)
+        public PartialFormCreateUser addFormStack(manageUser prevForm)
         {
-            this.prev= prevForm;
+            this.prev = prevForm;
             return this;
         }
 
-        public PartialFormCreateUser InjectRepo(IUserRepository userRepo) {
-            if (userRepo!=null) {
+        public PartialFormCreateUser InjectRepo(IUserRepository userRepo)
+        {
+            if (userRepo != null)
+            {
                 this.userRepo = userRepo;
             }
             return this;
@@ -49,9 +51,10 @@ namespace WinFormsApp1.partialForm
         {
             this.userEntity = userEntity;
             this.userName.Text = userEntity.UserName;
-            emailTxt.Text = userEntity.Email;   
-            countryTxt.Text = userEntity.Country;   
-            cityTxt.Text = userEntity.City; 
+            emailTxt.Text = userEntity.Email;
+            countryTxt.Text = userEntity.Country;
+            cityTxt.Text = userEntity.City;
+            userIdTxt.Text = Convert.ToString(userEntity.Id);
             return this;
         }
 
@@ -59,7 +62,35 @@ namespace WinFormsApp1.partialForm
         {
             long id = this.userRepo.getlatestId() + 1;
             IUserBuilder userBuilder = new UserBuilder();
+            String cityChange = cityTxt.Text;
+            var newUsrData = userBuilder
+                .InCity(cityTxt.Text)
+                .ofCountry(countryTxt.Text)
+                .setEmail(emailTxt.Text)
+                .setName(userName.Text).build();
+            try
+            {
+                this.userRepo.UpdateUserById(newUsrData, this.userEntity.Id);
+                this.prev.RefreshData();
+                prev.Visible = true;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMsgBox(ex.Message);
+            }
+        }
 
+        public void ShowErrorMsgBox(String msg)
+        {
+            string message = msg;
+            string title = "error";
+            MessageBox.Show(message, title);
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

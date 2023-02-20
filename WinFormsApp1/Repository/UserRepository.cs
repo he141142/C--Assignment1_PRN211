@@ -35,7 +35,14 @@ namespace WinFormsApp1.Repository
         }
 
 
+        public void InsertNew(UserEntity userEntity)
+        {
+            this.userDAO.InsertNew(userEntity);
+        }
+
         public UserEntity findByEmail(String email) => this.userDAO.findByEmail(email);
+
+        public void UpdateUserById(UserEntity userEntity, long id) => this.userDAO.UpdateUserById(userEntity, id);
 
     }
 }
