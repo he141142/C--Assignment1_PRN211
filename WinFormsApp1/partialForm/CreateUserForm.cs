@@ -31,6 +31,12 @@ namespace WinFormsApp1.partialForm
             String email = emailTxt.Text;
             String passWord = password.Text;
             String rePass = reEnterpassword.Text;
+
+            if (!string.Equals(passWord, rePass))
+            {
+                ShowErrorMsgBox("password does not match!");
+                return;
+            }
             IUserBuilder userBuild = new UserBuilder();
             UserEntity usr = userBuild
                 .setName(_userName)
@@ -39,9 +45,10 @@ namespace WinFormsApp1.partialForm
                 .ofCountry(country)
                 .setEmail(email)
                 .build();
+
+            
             try
             {
-                usr.SelfValidate();
                 this.repo.InsertNew(usr);
                 this.prev.RefreshData();
                 this.Close();
@@ -61,7 +68,7 @@ namespace WinFormsApp1.partialForm
             return this;
         }
 
-        public CreateUserForm ỊnectRepo(UserRepository repo)
+        public CreateUserForm InjectRepo(UserRepository repo)
         {
             this.repo = repo;
             return this;
@@ -75,5 +82,14 @@ namespace WinFormsApp1.partialForm
             MessageBox.Show(message, title);
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void CreateUserForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

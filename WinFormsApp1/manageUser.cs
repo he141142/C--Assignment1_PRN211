@@ -68,7 +68,8 @@ namespace WinFormsApp1
 
         private void createUserBtn_Click(object sender, EventArgs e)
         {
-
+            CreateUserForm createForm = new CreateUserForm().InjectForm(this).InjectRepo(repo);
+            createForm.Visible= true;
         }
 
         private void contextMenuStrip2_Opening(object sender, CancelEventArgs e)
@@ -83,7 +84,13 @@ namespace WinFormsApp1
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
-            if(userIDSelected.Text!= null) {
+            if(userIDSelected.Text!= null || userIDSelected.Text!="") {
+                long idToFind = TryParseLongValue(userIDSelected.Text);
+                if (idToFind == -1)
+                {
+                    ShowErrorMsgBox("You must to choose exactly one entity!");
+                    return;
+                }
                 UserEntity userEntity = this.repo.findById(Convert.ToInt64(userIDSelected.Text));
                 if (userEntity != null)
                 {
@@ -91,6 +98,26 @@ namespace WinFormsApp1
                          .InjectRepo(repo).LoadUserEntity(userEntity);
                     formCreateUsr.Visible= true;
                 }
+            }
+        }
+
+        public static void ShowErrorMsgBox(String msg)
+        {
+            string message = msg;
+            string title = "error";
+            MessageBox.Show(message, title);
+        }
+
+
+        private long TryParseLongValue(String someValue)
+        {
+            try
+            {
+                return Convert.ToInt64(userIDSelected.Text);
+            }
+            catch(FormatException ex)
+            {
+                return -1;
             }
         }
     }

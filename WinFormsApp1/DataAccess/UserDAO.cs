@@ -107,9 +107,14 @@ namespace WinFormsApp1.DataAccess
 
         public UserEntity findById(long id)
         {
-            if (this.userEntityList != null)
+            try
+            {
                 return this.userEntityList.First(u => u.Id == id);
-            return null;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
 
         public long getMaxId()
@@ -168,10 +173,20 @@ namespace WinFormsApp1.DataAccess
         {
             try
             {
+                Debug.WriteLine(this.userEntityList.ToList().Count);
                 userEntity.Id = this.getMaxId() + 1;
+                userEntity.Role = constants.enums.Role.USER;
                 userEntity.SelfValidate();
-                if (!IsEmailExist) throw new Exception("Email already existed!");
-                userEntityList.Concat(new List<UserEntity> { UserEntity});
+                if (this.IsEmailExist(userEntity.Email)) throw new Exception("Email already existed!");
+                else
+                {
+                    this.userEntityList = this.userEntityList.Concat(new List<UserEntity> { userEntity });
+                    Debug.WriteLine(this.userEntityList.ToList().Count);
+                    UserEntity user_ = this.findById(userEntity.Id);
+                    Debug.WriteLine(
+                        string.Format("user inserted : email : {0} name: {1}", user_.Email, user_.UserName)
+                        );
+                }
             }
             catch (Exception ex)
             {

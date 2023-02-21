@@ -99,6 +99,7 @@
             // 
             this.userIDSelected.Location = new System.Drawing.Point(280, 92);
             this.userIDSelected.Name = "userIDSelected";
+            this.userIDSelected.ReadOnly = true;
             this.userIDSelected.Size = new System.Drawing.Size(125, 27);
             this.userIDSelected.TabIndex = 5;
             // 

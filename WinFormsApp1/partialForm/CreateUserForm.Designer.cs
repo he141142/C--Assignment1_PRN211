@@ -34,6 +34,8 @@
             this.saveChangeBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.reEnterpassword = new System.Windows.Forms.MaskedTextBox();
+            this.password = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,8 +46,6 @@
             this.countryTxt = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.password = new System.Windows.Forms.MaskedTextBox();
-            this.reEnterpassword = new System.Windows.Forms.MaskedTextBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -85,11 +85,11 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel1.Location = new System.Drawing.Point(93, 63);
+            this.panel1.Location = new System.Drawing.Point(93, 47);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(614, 297);
+            this.panel1.Size = new System.Drawing.Size(614, 313);
             this.panel1.TabIndex = 7;
-            this.panel1.UseWaitCursor = true;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // tableLayoutPanel1
             // 
@@ -120,7 +120,20 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(545, 229);
             this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.UseWaitCursor = true;
+            // 
+            // reEnterpassword
+            // 
+            this.reEnterpassword.Location = new System.Drawing.Point(132, 193);
+            this.reEnterpassword.Name = "reEnterpassword";
+            this.reEnterpassword.Size = new System.Drawing.Size(354, 27);
+            this.reEnterpassword.TabIndex = 12;
+            // 
+            // password
+            // 
+            this.password.Location = new System.Drawing.Point(132, 160);
+            this.password.Name = "password";
+            this.password.Size = new System.Drawing.Size(354, 27);
+            this.password.TabIndex = 11;
             // 
             // label1
             // 
@@ -130,7 +143,6 @@
             this.label1.Size = new System.Drawing.Size(77, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "user name";
-            this.label1.UseWaitCursor = true;
             // 
             // label2
             // 
@@ -140,7 +152,6 @@
             this.label2.Size = new System.Drawing.Size(46, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "email";
-            this.label2.UseWaitCursor = true;
             // 
             // label3
             // 
@@ -150,7 +161,6 @@
             this.label3.Size = new System.Drawing.Size(32, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "city";
-            this.label3.UseWaitCursor = true;
             // 
             // label4
             // 
@@ -160,7 +170,6 @@
             this.label4.Size = new System.Drawing.Size(58, 20);
             this.label4.TabIndex = 3;
             this.label4.Text = "country";
-            this.label4.UseWaitCursor = true;
             // 
             // userName
             // 
@@ -169,7 +178,6 @@
             this.userName.Name = "userName";
             this.userName.Size = new System.Drawing.Size(354, 31);
             this.userName.TabIndex = 4;
-            this.userName.UseWaitCursor = true;
             // 
             // emailTxt
             // 
@@ -178,7 +186,6 @@
             this.emailTxt.Name = "emailTxt";
             this.emailTxt.Size = new System.Drawing.Size(354, 34);
             this.emailTxt.TabIndex = 5;
-            this.emailTxt.UseWaitCursor = true;
             // 
             // cityTxt
             // 
@@ -187,7 +194,6 @@
             this.cityTxt.Name = "cityTxt";
             this.cityTxt.Size = new System.Drawing.Size(354, 34);
             this.cityTxt.TabIndex = 6;
-            this.cityTxt.UseWaitCursor = true;
             // 
             // countryTxt
             // 
@@ -196,7 +202,6 @@
             this.countryTxt.Name = "countryTxt";
             this.countryTxt.Size = new System.Drawing.Size(354, 34);
             this.countryTxt.TabIndex = 7;
-            this.countryTxt.UseWaitCursor = true;
             // 
             // label6
             // 
@@ -216,20 +221,6 @@
             this.label7.TabIndex = 11;
             this.label7.Text = "Re enter pasword";
             // 
-            // password
-            // 
-            this.password.Location = new System.Drawing.Point(132, 160);
-            this.password.Name = "password";
-            this.password.Size = new System.Drawing.Size(354, 27);
-            this.password.TabIndex = 11;
-            // 
-            // reEnterpassword
-            // 
-            this.reEnterpassword.Location = new System.Drawing.Point(132, 193);
-            this.reEnterpassword.Name = "reEnterpassword";
-            this.reEnterpassword.Size = new System.Drawing.Size(354, 27);
-            this.reEnterpassword.TabIndex = 12;
-            // 
             // CreateUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -241,6 +232,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "CreateUserForm";
             this.Text = "CreateUserForm";
+            this.Load += new System.EventHandler(this.CreateUserForm_Load);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

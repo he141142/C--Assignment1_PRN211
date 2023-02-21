@@ -18,3 +18,4 @@ C:\Users\bighe\source\repos\WinFormsApp1\WinFormsApp1\obj\Debug\net7.0-windows\W
 C:\Users\bighe\source\repos\WinFormsApp1\WinFormsApp1\obj\Debug\net7.0-windows\ref\WinFormsApp1.dll
 C:\Users\bighe\source\repos\WinFormsApp1\WinFormsApp1\obj\Debug\net7.0-windows\WinFormsApp1.manageUser.resources
 C:\Users\bighe\source\repos\WinFormsApp1\WinFormsApp1\obj\Debug\net7.0-windows\WinFormsApp1.partialForm.PartialFormCreateUser.resources
+C:\Users\bighe\source\repos\WinFormsApp1\WinFormsApp1\obj\Debug\net7.0-windows\WinFormsApp1.partialForm.CreateUserForm.resources

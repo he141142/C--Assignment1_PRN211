@@ -69,7 +69,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(545, 223);
             this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.UseWaitCursor = true;
             // 
             // label1
             // 
@@ -79,7 +78,6 @@
             this.label1.Size = new System.Drawing.Size(77, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "user name";
-            this.label1.UseWaitCursor = true;
             // 
             // label2
             // 
@@ -89,7 +87,6 @@
             this.label2.Size = new System.Drawing.Size(46, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "email";
-            this.label2.UseWaitCursor = true;
             // 
             // label3
             // 
@@ -99,7 +96,6 @@
             this.label3.Size = new System.Drawing.Size(32, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "city";
-            this.label3.UseWaitCursor = true;
             // 
             // label4
             // 
@@ -109,7 +105,6 @@
             this.label4.Size = new System.Drawing.Size(58, 20);
             this.label4.TabIndex = 3;
             this.label4.Text = "country";
-            this.label4.UseWaitCursor = true;
             // 
             // userName
             // 
@@ -118,7 +113,6 @@
             this.userName.Name = "userName";
             this.userName.Size = new System.Drawing.Size(354, 31);
             this.userName.TabIndex = 4;
-            this.userName.UseWaitCursor = true;
             // 
             // emailTxt
             // 
@@ -127,7 +121,6 @@
             this.emailTxt.Name = "emailTxt";
             this.emailTxt.Size = new System.Drawing.Size(354, 34);
             this.emailTxt.TabIndex = 5;
-            this.emailTxt.UseWaitCursor = true;
             // 
             // cityTxt
             // 
@@ -136,7 +129,6 @@
             this.cityTxt.Name = "cityTxt";
             this.cityTxt.Size = new System.Drawing.Size(354, 34);
             this.cityTxt.TabIndex = 6;
-            this.cityTxt.UseWaitCursor = true;
             // 
             // countryTxt
             // 
@@ -145,7 +137,6 @@
             this.countryTxt.Name = "countryTxt";
             this.countryTxt.Size = new System.Drawing.Size(354, 34);
             this.countryTxt.TabIndex = 7;
-            this.countryTxt.UseWaitCursor = true;
             // 
             // panel1
             // 
@@ -158,7 +149,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(614, 297);
             this.panel1.TabIndex = 1;
-            this.panel1.UseWaitCursor = true;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // saveChangeBtn
