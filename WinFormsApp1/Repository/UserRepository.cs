@@ -43,6 +43,6 @@ namespace WinFormsApp1.Repository
         public UserEntity findByEmail(String email) => this.userDAO.findByEmail(email);
 
         public void UpdateUserById(UserEntity userEntity, long id) => this.userDAO.UpdateUserById(userEntity, id);
-
+        public void RemoveUserByid(long userId) => this.userDAO.RemoveUserByid(userId);
     }
 }

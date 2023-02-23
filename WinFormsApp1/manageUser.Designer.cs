@@ -36,6 +36,7 @@
             this.updateBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.userIDSelected = new System.Windows.Forms.TextBox();
+            this.deleteBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,11 +104,22 @@
             this.userIDSelected.Size = new System.Drawing.Size(125, 27);
             this.userIDSelected.TabIndex = 5;
             // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Location = new System.Drawing.Point(389, 561);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(94, 29);
+            this.deleteBtn.TabIndex = 6;
+            this.deleteBtn.Text = "Delete";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            // 
             // manageUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1219, 641);
+            this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.userIDSelected);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.updateBtn);
@@ -136,5 +148,6 @@
         private Button updateBtn;
         private Label label1;
         private TextBox userIDSelected;
+        private Button deleteBtn;
     }
 }

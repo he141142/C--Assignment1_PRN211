@@ -26,5 +26,7 @@ namespace WinFormsApp1.Repository.interfaces
 
        public void InsertNew(UserEntity userEntity);
 
+        public void RemoveUserByid(long userId);
+
     }
 }

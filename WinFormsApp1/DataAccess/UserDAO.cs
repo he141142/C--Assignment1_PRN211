@@ -111,7 +111,7 @@ namespace WinFormsApp1.DataAccess
             {
                 return this.userEntityList.First(u => u.Id == id);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return null;
             }
@@ -198,7 +198,10 @@ namespace WinFormsApp1.DataAccess
 
         private bool IsEmailExist(string email) => this.findByEmail(email) != null ? true : false;
 
-
+        public void RemoveUserByid(long userId)
+        {
+            this.userEntityList = this.userEntityList.Where(u => u.Id != userId);
+        }
 
 
         public IEnumerable<UserEntity> UserEntityList { get => userEntityList; set => userEntityList = value; }

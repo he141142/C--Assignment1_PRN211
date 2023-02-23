@@ -62,6 +62,9 @@ namespace WinFormsApp1.partialForm
 
         }
 
+
+         
+
         public CreateUserForm InjectForm(manageUser prev)
         {
             this.prev = prev;

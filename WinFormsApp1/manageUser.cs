@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using WinFormsApp1.BussinessObject;
 using WinFormsApp1.partialForm;
 using WinFormsApp1.Repository;
+using WinFormsApp1.Trigger;
 
 namespace WinFormsApp1
 {
@@ -119,6 +120,35 @@ namespace WinFormsApp1
             {
                 return -1;
             }
+        }
+
+        public static void DialogOtion(Itrigger trigger)
+        {
+            DialogResult dialogResult = MessageBox.Show(trigger.Content(), trigger.Title(), MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                trigger.PerFormYes();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            long idToFind = TryParseLongValue(userIDSelected.Text);
+            if (idToFind == -1)
+            {
+                ShowErrorMsgBox("You must to choose exactly one entity!");
+                return;
+            }
+            Itrigger deleteTrigger = new ConfirmDeleteUserHandler(this.repo,idToFind)
+                .WithContent("Delte this user?")
+                .WithTitle("delete")
+                .AddForm(this);
+
+            DialogOtion(deleteTrigger);
         }
     }
 }
